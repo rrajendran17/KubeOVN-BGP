@@ -1,0 +1,7 @@
+apiVersion: kubeovn.io/v1
+kind: ProviderNetwork
+metadata:
+  name: pn1
+spec:
+  defaultInterface: ens7
+

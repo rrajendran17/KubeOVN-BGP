@@ -1,0 +1,7 @@
+apiVersion: kubeovn.io/v1
+kind: Vlan
+metadata:
+  name: untaggedvlan
+spec:
+  provider: pn1
+

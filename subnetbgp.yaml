@@ -1,0 +1,10 @@
+apiVersion: kubeovn.io/v1
+kind: Subnet
+metadata:
+  name: subnetbgp
+spec:
+  protocol: IPv4
+  provider: vswitchbgp.default.ovn
+  vpc: vpcbgp
+  cidrBlock: 172.50.10.0/24
+  gateway: 172.50.10.1
