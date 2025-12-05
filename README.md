@@ -2,7 +2,7 @@
 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/0282e9fa-61b1-46d7-80c1-1fc9534689ed" />
 
-Use KubeOVN's BGP support to advertise routes from Harvester clusters to external hosts.This eliminates the need for NAT and provides external connectivity through L3 Integration and when combined with ECMP and BFP provides faster convergence and high availabilty.
+Use KubeOVN's BGP support to advertise routes from Harvester clusters to external hosts.This eliminates the need for NAT and provides external connectivity through L3 Integration and when combined with ECMP and BFD provides faster convergence and high availabilty.
 
 
 - Label Harvester (or Kubernetes) nodes to run kube-ovn-speaker.
