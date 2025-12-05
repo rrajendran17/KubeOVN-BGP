@@ -14,7 +14,40 @@ kubectl label nodes harvester-node-0 ovn.kubernetes.io/bgp=true
 - Create a VM attached to overlay network on subnetbgp
 - Apply the provider network and vlan yaml
 - Edit the subnet and add vlan
-  
+
+  ```
+  26a5f988-c11b-4027-b221-ac5ddc1fa241
+    Bridge br-pn1
+        Port patch-localnet.subnetbgp-to-br-int
+            Interface patch-localnet.subnetbgp-to-br-int
+                type: patch
+                options: {peer=patch-br-int-to-localnet.subnetbgp}
+        Port ens7
+            trunks: [0]
+            Interface ens7
+        Port br-pn1
+            Interface br-pn1
+                type: internal
+    Bridge br-int
+        fail_mode: secure
+        datapath_type: system
+        Port br-int
+            Interface br-int
+                type: internal
+        Port ovn0
+            Interface ovn0
+                type: internal
+        Port "7eff0_37a8eec_h"
+            Interface "7eff0_37a8eec_h"
+        Port patch-br-int-to-localnet.subnetbgp
+            Interface patch-br-int-to-localnet.subnetbgp
+                type: patch
+                options: {peer=patch-localnet.subnetbgp-to-br-int}
+        Port mirror0
+            Interface mirror0
+                type: internal
+    ovs_version: "3.5.3"
+  ```
 - Annotate the pod and subnetbgp, so that kuebovn advertises the route to peer.
   - kubectl annotate pod sample ovn.kubernetes.io/bgp=true
   - kubectl annotate subnet subnetbgp ovn.kubernetes.io/bgp=true
