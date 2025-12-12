@@ -181,3 +181,13 @@ C>* 192.168.121.0/24 is directly connected, virbr1, 00:53:03
 K>* 195.135.220.137/32 [0/50] via 192.168.1.254, wlp2s0, 00:11:24
 
 ```
+
+- Ping from VM (172.50.10.2) to 192.168.1.74 (peer) should work
+- Ping from VM (172.50.10.2) to 8.8.8.8 should work
+  - "LIBVIRT_FWO -i virbr2 -j REJECT --reject-with icmp-port-unreachable" rule on peer was rejecting the traffic with icmp port unreachable.
+  - added additional ip table rules on peer (local laptop) to allow 172.50.10.2 traffic and nat rule for internet acces
+    ```
+    sudo iptables -I LIBVIRT_FWO 1 -i virbr2 -s 172.50.10.0/24 -j ACCEPT
+    sudo iptables -I LIBVIRT_FWI 1 -o virbr2 -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+    sudo iptables -t nat -A POSTROUTING -s 172.50.10.0/24 -o wlp2s0 -j MASQUERADE
+    ```
