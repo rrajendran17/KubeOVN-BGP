@@ -1,6 +1,7 @@
 ### KubeOVN-BGP
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/0282e9fa-61b1-46d7-80c1-1fc9534689ed" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/6e6978e5-f476-4858-b5e3-3235f3d1ce1e" />
+
 
 Use KubeOVN's BGP support to advertise routes from Harvester clusters to external hosts.This eliminates the need for NAT and provides external connectivity through L3 Integration and when combined with ECMP and BFD provides faster convergence and high availabilty.
 
